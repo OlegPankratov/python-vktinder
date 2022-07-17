@@ -2,8 +2,8 @@ from random import randrange
 
 import vk_api
 
-group_token = '#'  # Токен группы
-personal_token = '#'  # Персональный токен
+group_token = ''  # Токен группы
+personal_token = ''  # Персональный токен
 
 
 class VkService:
@@ -35,8 +35,8 @@ class VkService:
             photo_like_counts[item_id] = likes['count']
         return photo_like_counts
 
-    def get_users_by_filter(self, filter):
-        request_body = filter
+    def get_users_by_filter(self, user_filter):
+        request_body = user_filter
         request_body['fields'] = 'sex,bdate,city,status,nickname,photo_50'
         request_body['sort'] = 0
         return self.personal_vk.method("users.search", request_body)
